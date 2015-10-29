@@ -38,8 +38,8 @@ Its functionality all revolves around this idea, so the service offered is also 
 
 hurtle has two origins:
 
-1. is the ICCLab's [Cloud Orchestration Initiative](http://blog.zhaw.ch/icclab/category/research-approach/themes/cloud-orchestration/)
-2. is in the telcom world and in particular [Network Function Virtualisation](https://en.wikipedia.org/wiki/Network_functions_virtualization) (NFV). Here hurtle has been used to offer services that have been to date executed directly on or embedded in hardware.
+1. Mobile Cloud Networking, obviously, where in the telcom world and in particular [Network Function Virtualisation](https://en.wikipedia.org/wiki/Network_functions_virtualization) (NFV). Here hurtle has been used to offer services that have been to date executed directly on or embedded in hardware.
+2. is the ICCLab's [Cloud Orchestration Initiative](http://blog.zhaw.ch/icclab/category/research-approach/themes/cloud-orchestration/)
 
 And well, it's all powered upon another hurtle ;-)
 
@@ -47,94 +47,14 @@ And well, it's all powered upon another hurtle ;-)
 
 This repository provides documentation for hurtle and
 pointers to the other repositories that make up a complete hurtle system.
-See the [repository list](./docs/reference.md).
 
 hurtle consists of the following components:
 
-- [Service Manager (SM)](./docs/architecture.md): receives requests for new tenant service instances -> [Code](https://github.com/icclab/hurtle_sm)
-- [Service Orchestrator (SO)](./docs/architecture.md): manages the lifecycle of a tenant service instance -> [Sample code](https://github.com/icclab/hurtle_sample_so)
-- [CloudController (CC)](./docs/architecture.md): manages and abstracts underlying resources and SOs -> [Code](https://github.com/icclab/hurtle_cc_api)
+- Service Manager (SM): receives requests for new tenant service instances -> [Code](https://github.com/icclab/hurtle_sm)
+- Service Orchestrator (SO): manages the lifecycle of a tenant service instance -> [Sample code](https://github.com/icclab/hurtle_sample_so)
+- CloudController (CC): manages and abstracts underlying resources and SOs -> [Code](https://github.com/icclab/hurtle_cc_api)
 
-For more details, see:
-
-- [hurtle's Architecture](./docs/architecture.md) for overall logical architecture.
-- [hurtle's Technical Architecture](./docs/hurtle_technical_implementation.md) for details on the implementation of the support components.
-- [hurtle's How to write your Hurtle Service?](./docs/how_to_write_a_hurtle_service.md) for details on the components necessary to create a hurtle manageable service. Note that a lot of information can also be found directly in the examples provided here!
-- [hurtle Reference & Repolist](./docs/reference.md) for an overview of each component.
-
-# Features
-
- - Complete orchestration of your software
-   - Resources it uses (e.g. virtual machines, networks)
-   - External services it needs
- - Multi-dc/multi-region support
-   - including inter-DC connectivity
- - Easy implementation of your service API - See [how to write your Hurtle Service](./docs/how_to_write_a_hurtle_service.md)
- - Guided implementation of your service instance manager
-   - Many languages supported including Python, Java, Perl, PHP
-   - Demo applications available
- - Scalable runtime management
- - Complete end-to-end logging of your software
- - Integration with [OpenStack](http://www.openstack.org/), [ICCLab's Joyent SDC contribs](https://github.com/icclab/sdc-heat)
- - Handle potential incidents of your software
-   - Integration with [ICCLab's Watchtower (Cloud Incident Management)](https://github.com/icclab/watchtower-common)
- - Bill for your software and services
-   - Integration with [ICCLab's Cyclops (Rating, charging & Billing)](https://icclab.github.io/cyclops/)
- - Leverages Open Cloud Standards ([OCCI](http://www.occi-wg.org), [OpenStack](http://www.openstack.org))
-
-# How Does hurtle Work?
-
-The easiest way to understand how hurtle works is through how its life cycle of an application is managed. There are 6 key phases to understand:
-
-<div align="center">
-<img src="https://raw.githubusercontent.com/icclab/hurtle/master/docs/figs/hurtle_lifecycle_2.png" alt="hurtle Text" title="hurtle">
-</div>
-
- 1. **Design**: where the topology and dependencies of each service component is specified. The model here typically takes the form of a graph.
- 2. **Implementation**: This is where the developer(s) needs to implement the actual software that will be provided as a service through hurtle
- 3. **Deploy**: the complete fleet of resources and services are deployed according to a plan executed by hurtle. At this stage they are not configured.
- 4. **Provision**: each resource and service is correctly provisioned and configured by hurtle. This must be done such that one service or resource is not without a required operational dependency (e.g. a php application without its database).
- 5. **Runtime**: once all components of an hurtle orchestration are running, the next key element is that they are managed. To manage means at the most basic level to monitor the components. Based on metrics extracted, performance indicators can be formulated using logic-based rules. These when notified where an indicator’s threshold is breached, an Orchestrator could take a remedial action ensuring reliability.
- 6. **Disposal**: Where a hurtle service instance is destroyed.
- 
-More details are in the [logical](./docs/architecture.md) and [technical](./docs/hurtle_technical_implementation.md) architecture documents.
-
-# Getting Started
-
-## Quickstart
-Note: The Vagrant boxes are quiet demanding (6GB and 2GB of RAM) on your System.
-
-The Vagrant boxes give you a complete environment to play around: OpenStack, OpenShift and the hurtle-sample-so are preinstalled.
-
-
-```
-# Clone this repo
-git clone https://github.com/icclab/hurtle.git
-
-# Spin up the Vagrant boxes
-cd vagrant 
-vagrant up
-
-# Grab a coffee, this could take a while (~3GB download)
-
-# Once the machines are booted up, check out the hurtle-sample-so README file
-
-```
-
-# Roadmap
-
-Hurtling along soon:
-
- - More examples including the [ cloud native Zurmo implementation from ICCLab](https://github.com/icclab/cna-seed-project)
- - Enhanced workload placement, dynamic policy-based
- - Support for docker-registry deployed containers
- - Runtime updates to service and resource topologies
- - CI and CD support
-   - safe monitored dynamic service updates
- - TOSCA support
- - Support for VMware and CloudStack
- - User interface to visualise resource and services relationships
- - Additional external service endpoint protocol support
+For more details, see [hurtle.it](http://hurtle.it)
 
 # Community & Support
 
