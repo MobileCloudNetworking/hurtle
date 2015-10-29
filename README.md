@@ -1,3 +1,6 @@
+Hurtle is the orchestration framework that powers all orchestration of MCN services.
+
+
 <div align="center" >
 <img src="https://raw.githubusercontent.com/icclab/hurtle/master/docs/figs/hurtle-logo.png" title="hurtle" width=250px>
 <br/>
